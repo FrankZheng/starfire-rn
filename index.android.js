@@ -9,10 +9,71 @@ import {
   StyleSheet,
   Text,
   View,
-  Image
+  Image,
+  Navigator,
+  TouchableWithoutFeedback
 } from 'react-native';
 
-class Hello extends Component {
+class Navigation extends Component {
+  render() {
+    return (
+      <Navigator initialRoute={{id: 'index'}} renderScene={this.navigatorRenderScene}/>
+    );
+  }
+
+  navigatorRenderScene(route, navigator) {
+    _navigator = navigator;
+    switch (route.id) {
+      case 'index':
+        return (<Index navigator={navigator}/>);
+      case 'check-in':
+        return (<CheckIn navigator={navigator}/>);
+      case 'more':
+        return (<More navigator={navigator}/>);
+      default:
+    }
+  }
+}
+
+class CheckIn extends Component {
+  render() {
+    return (
+      <View>
+        <TouchableWithoutFeedback onPress={this.props.navigator.pop}>
+          <View>
+            <Text>
+              back
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
+        <Text>
+          check in
+        </Text>
+      </View>
+    );
+  };
+}
+
+class More extends Component {
+  render() {
+    return(
+      <View>
+        <TouchableWithoutFeedback onPress={this.props.navigator.pop}>
+          <View>
+            <Text>
+              back
+            </Text>
+          </View>
+        </TouchableWithoutFeedback>
+        <Text>
+          More
+        </Text>
+      </View>
+    );
+  }
+}
+
+class Index extends Component {
   render() {
     return (
       <View style={styles.main}>
@@ -28,21 +89,36 @@ class Hello extends Component {
           </View>
         </View>
         <View style={styles.menu}>
-          <View style={styles.menuItem}>
-            <Image source={require('./img/menu-checkin.png')} style={styles.menuItemImg}/>
-            <Text>
-              我要签到
-            </Text>
-          </View>
-          <View style={styles.menuItem}>
-            <Image source={require('./img/menu-more.png')} style={styles.menuItemImg}/>
-            <Text>
-              更多
-            </Text>
-          </View>
+          <TouchableWithoutFeedback onPress={this.checkIn.bind(this)}>
+            <View style={styles.menuItem}>
+              <Image source={require('./img/menu-checkin.png')}
+                     style={styles.menuItemImg}/>
+              <Text>
+                我要签到
+              </Text>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={this.more.bind(this)}>
+            <View style={styles.menuItem}>
+              <Image source={require('./img/menu-more.png')} style={styles.menuItemImg}/>
+              <Text>
+                更多
+              </Text>
+            </View>
+          </TouchableWithoutFeedback>
         </View>
       </View>
     );
+  }
+  checkIn() {
+    this.props.navigator.push({
+      id: 'check-in',
+    });
+  }
+  more() {
+    this.props.navigator.push({
+      id: 'more',
+    });
   }
 }
 
@@ -98,4 +174,4 @@ const styles = StyleSheet.create({
   },
 });
 
-AppRegistry.registerComponent('Hello', () => Hello);
+AppRegistry.registerComponent('Navigation', () => Navigation);
