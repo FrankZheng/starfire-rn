@@ -14,6 +14,9 @@ import {
   TouchableWithoutFeedback
 } from 'react-native';
 
+import CheckIn from './CheckIn';
+import More from './More';
+
 class Navigation extends Component {
   render() {
     return (
@@ -32,44 +35,6 @@ class Navigation extends Component {
         return (<More navigator={navigator}/>);
       default:
     }
-  }
-}
-
-class CheckIn extends Component {
-  render() {
-    return (
-      <View>
-        <TouchableWithoutFeedback onPress={this.props.navigator.pop}>
-          <View>
-            <Text>
-              back
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <Text>
-          check in
-        </Text>
-      </View>
-    );
-  };
-}
-
-class More extends Component {
-  render() {
-    return(
-      <View>
-        <TouchableWithoutFeedback onPress={this.props.navigator.pop}>
-          <View>
-            <Text>
-              back
-            </Text>
-          </View>
-        </TouchableWithoutFeedback>
-        <Text>
-          More
-        </Text>
-      </View>
-    );
   }
 }
 
