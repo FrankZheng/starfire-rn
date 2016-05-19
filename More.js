@@ -9,18 +9,15 @@ import {
   TouchableWithoutFeedback
 } from 'react-native';
 
+import NavigationBar from './NavigationBar'
+
 
 class More extends Component {
   render() {
     return(
       <View style={styles.main}>
-        <View style={styles.navigationBar}>
-          <Text style={styles.navBack}>
-            返回
-          </Text>
-          <Text style={styles.navTitle}>
-            更多
-          </Text>
+        <NavigationBar title="更多" navigator={this.props.navigator}/>
+        <View style={styles.content}>
         </View>
       </View>
     );
@@ -29,24 +26,12 @@ class More extends Component {
 
 const styles = StyleSheet.create({
   main: {
-    backgroundColor: '#cccccc',
-
+    backgroundColor: '#00cc00',
+    flex:1,
   },
-  navigationBar: {
-    backgroundColor: '#000000',
-    flexDirection: 'row',
-    paddingTop: 20,
-    paddingBottom: 10,
-    paddingLeft: 5,
-    paddingRight: 5,
-  },
-  navBack: {
-    color: '#fff',
-  },
-  navTitle: {
-    color: '#fff',
-    textAlign: 'center',
+  content: {
     flex: 1,
+    //backgroundColor: 'red',
   },
 
 });
