@@ -9,7 +9,11 @@ import {
   TouchableWithoutFeedback
 } from 'react-native';
 
-import NavigationBar from './NavigationBar'
+import NavigationBar from './NavigationBar';
+var AppInfo = require('./AppInfo');
+var log = require('./Log');
+
+const TAG = "More";
 
 class InfoRow extends Component {
   render() {
@@ -41,16 +45,34 @@ class InfoRowCenter extends Component {
 }
 
 
-
-
 class More extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      appVersion: null,
+    }
+  }
+
+  componentDidMount() {
+    this.getAppInfo();
+  }
+
+  getAppInfo() {
+    AppInfo.getAppInfo(null, (info) => {
+      this.setState({
+        appVersion: info.appVersion,
+      });
+    });
+  }
+
+
   render() {
     return(
       <View style={styles.main}>
         <NavigationBar title="更多" navigator={this.props.navigator}/>
         <View style={styles.content}>
           <Image source={require('./img/logo.png')} style={styles.logo}/>
-          <InfoRow title="当前版本号" value="v1.0.0"/>
+          <InfoRow title="当前版本号" value={this.state.appVersion}/>
           <InfoRowCenter title="退出登录"/>
         </View>
       </View>
