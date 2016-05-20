@@ -96,18 +96,23 @@ const styles = StyleSheet.create({
     backgroundColor: '#00C9B1',
     flexDirection: 'row',
     height: 100,
+    alignItems: 'center',
+    paddingLeft: 20,
   },
   headimg: {
-    justifyContent: 'center',
+    borderRadius: 45,
   },
   userPanel: {
-
+    paddingLeft: 20,
   },
   userTitle: {
-
+    color: '#fff',
+    fontSize: 20,
+    paddingBottom: 10,
   },
   userInfo: {
-
+    color: '#fff',
+    fontSize: 12,
   },
 
   menu: {
@@ -115,7 +120,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   menuItem: {
-
+    paddingTop: 20,
+    paddingBottom: 20,
+    flex: 0.5,
+    alignItems: 'center',
   },
   menuItemImg: {
     width: 40,
