@@ -25,7 +25,7 @@ public class AppInfoModule extends ReactContextBaseJavaModule  {
     }
 
     @ReactMethod
-    public void getAppInfo(Callback errorCallback, Callback successCallback) {
+    public void getAppInfo(Callback successCallback) {
         Log.d(TAG, "getAppInfo");
         WritableMap map = new WritableNativeMap();
         map.putString("appVersion", BuildConfig.VERSION_NAME);

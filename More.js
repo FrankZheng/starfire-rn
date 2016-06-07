@@ -58,7 +58,7 @@ class More extends Component {
   }
 
   getAppInfo() {
-    AppInfo.getAppInfo(null, (info) => {
+    AppInfo.getAppInfo((info) => {
       this.setState({
         appVersion: info.appVersion,
       });

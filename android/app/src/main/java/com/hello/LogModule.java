@@ -23,4 +23,9 @@ public class LogModule extends ReactContextBaseJavaModule {
     public void d(String tag, String message) {
         Log.d(tag, message);
     }
+
+    @ReactMethod
+    public void e(String tag, String message) {
+        Log.e(tag, message);
+    }
 }
